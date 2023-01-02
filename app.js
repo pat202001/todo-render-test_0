@@ -1,10 +1,31 @@
+/* eslint-disable no-undef */
 const express = require("express");
 const app = express();
 const { Todo } = require("./models");
 const bodyParser = require("body-parser");
+const path = require("path");
 //const { agent } = require("supertest");
 //const { request } = require("express");
 app.use(bodyParser.json());
+//set ejs  as niew engine
+
+app.set("view engine", "ejs");
+//response.render("index");
+app.get("/", async (request, response) => {
+  const allTodos = await Todo.getTodos();
+  if (request.accepts("html")) {
+    response.render("index", {
+      allTodos,
+    });
+  } else {
+    response.json({
+      allTodos,
+    });
+  }
+  response.render("index");
+});
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (request, response) {
   response.send("Hello World");
@@ -25,7 +46,6 @@ app.get("/todos", async function (_request, response) {
   // Then, we have to respond with all Todos, like:
   // response.send(todos)
 });
-
 app.get("/todos/:id", async function (request, response) {
   try {
     const todo = await Todo.findByPk(request.params.id);
