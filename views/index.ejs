@@ -4,12 +4,82 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="./CSS/styles.css" rel="stylesheet" />
     <title>TODO-Application</title>
   </head>
-  <header><%- include('header.ejs')%></header>
+  <!--<header> <%- include('header.ejs')%></header>-->
   <body>
-    <%- include('todos.ejs')%>
+    <div class="grid grid-cols-6">
+      <div class="col-start-3 col-span-2">
+        <!--<%- include('todos.ejs')%></div>-->
+        <%- include('header.ejs')%>
+        <form action="">
+          <div class="flex gap-4 py-4">
+            <div class="flex-auto">
+              <input
+                type="text"
+                name=""
+                id=""
+                class="border border-gray-300 rounded text-gray-900 p-2 text-sm w-full"
+                placeholder="What is next ?"
+                required
+              />
+            </div>
+            <div class="flex-auto">
+              <input
+                type="date"
+                name=""
+                id=""
+                class="border border-gray-300 rounded text-gray-900 p-2 text-sm w-full leading-4"
+              />
+            </div>
+            <div class="flex-no">
+              <button
+                type="submit"
+                class="bg-green-600 rounded px-5 py-1.5 text-white rounded font-medium mr-2 mb-2"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </form>
+        <div>
+          <h5>
+            Overdue
+            <span
+              id="count-over-due "
+              class="w-full rounded bg-gray-300 text-black  px-3 py-1.5 mr-2"
+              >1</span
+            >
+          </h5>
+
+          <%- include('todos.ejs')%>
+        </div>
+
+        <h5 id="count-due-today">
+          Due Today
+          <span
+            id="count-due-today "
+            class="w-full rounded bg-gray-300 text-black  px-3 py-1.5"
+            >2</span
+          >
+        </h5>
+
+        <%- include('todos.ejs')%>
+
+        <h5>
+          Due Later
+          <span
+            id="count-due-later "
+            class="w-full rounded bg-gray-300 text-black  px-3 py-1.5"
+            >3</span
+          >
+        </h5>
+
+        <%- include('todos.ejs')%>
+      </div>
+    </div>
   </body>
-  <footer><%- include('footer.ejs')%></footer>
+  <!--<footer><%- include('footer.ejs')%></footer>-->
 </html>
