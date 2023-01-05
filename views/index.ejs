@@ -9,12 +9,12 @@
     <title>TODO-Application</title>
   </head>
   <!--<header> <%- include('header.ejs')%></header>-->
-  <body>
+<body>
     <div class="grid grid-cols-6">
       <div class="col-start-3 col-span-2">
         <!--<%- include('todos.ejs')%></div>-->
-        <%- include('header.ejs')%>
-        <form action="">
+           <%- include('header.ejs')%>
+            <form>
           <div class="flex gap-4 py-4">
             <div class="flex-auto">
               <input
@@ -44,41 +44,23 @@
             </div>
           </div>
         </form>
-        <div>
-          <h5>
-            Overdue
-            <span
-              id="count-over-due"
-              class="w-full rounded bg-gray-300 text-black px-3 py-1.5 mr-2"
-              >1</span
-            >
-          </h5>
-
+       
+        <div class="mt-2">
+          <h5 style="display:inline">Overdue</h5>
+           <span id='count-overdue' class="w-full rounded bg-gray-300 text-black px-3 py-1.5">1</span> 
           <%- include('todos.ejs')%>
+           Due Today
+          <h5 style="display:inline">Due Today</h5>
+      <span style="text-align:right" id='count-due-today' class="w-full rounded bg-gray-300 text-black px-3 py-1.5">2</span>
+              <%- include('todos.ejs')%>
+
+       <h5 style="display:inline">Due Later</h5>
+        <span id="count-due-later "class="w-full rounded bg-gray-300 text-black px-3 py-1.5">3</span>
+        <%- include('todos.ejs')%>
         </div>
-
-        <h5>
-          Due Today
-          <span
-            id="count-due-today"
-            class="w-full rounded bg-gray-300 text-black px-3 py-1.5"
-            >2</span
-          >
-        </h5>
-
-        <%- include('todos.ejs')%>
-
-        <h5>
-          Due Later
-          <span
-            id="count-due-later"
-            class="w-full rounded bg-gray-300 text-black px-3 py-1.5"
-            >3</span
-          >
-        </h5>
-        <%- include('todos.ejs')%>
+      </div>
       </div>
     </div>
-  </body>
+</body>
   <!--<footer><%- include('footer.ejs')%></footer>-->
 </html>
